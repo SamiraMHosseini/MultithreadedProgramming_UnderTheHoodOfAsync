@@ -8,9 +8,13 @@ This repository contains C++ code that explores the underlying mechanics of the 
 Bartosz Milewski outlined that the std::async function internally works as follows:
 
 It creates a promise.
+
 It gets the future from this promise.
+
 It starts a new thread.
+
 This thread runs a 'thunk' - a simple stub function.
+
 The 'thunk' is a template function that takes the promise, calls the user-defined function inside a try-catch block.
 The 'thunk' then either calls set_value with the result or set_exception (in case of an exception) on that promise.
 The main thread can then retrieve the result or handle the exception using the future. This process demonstrates how std::async can return values from a worker thread back to the parent thread, or handle any exceptions that were thrown in the worker thread.
