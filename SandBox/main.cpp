@@ -5,7 +5,7 @@
 
 // This function simulates a simple worker function.
 // It either returns a string message or throws an exception based on the passed boolean status.
-template <typename T>
+
 std::string func(const bool status)
 {
 	if (status)
@@ -20,7 +20,7 @@ void Thunk(std::promise<T>&& prms, const bool& status)
 {
 	try
 	{
-		T result = func<T>(status); // calling the worker function
+		T result = func(status); // calling the worker function
 		prms.set_value(result); // setting the promise value
 	}
 	catch (...)
