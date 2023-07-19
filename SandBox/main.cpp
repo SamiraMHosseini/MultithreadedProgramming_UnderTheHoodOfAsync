@@ -35,9 +35,9 @@ int main()
 {
 	std::promise<std::string> prms; // creating a std::promise
 	std::future<std::string> future = prms.get_future(); // getting the associated future
-	bool status{ true };
+	bool status{ true }; 
 	// starting the new thread with the thunk function that takes our promise and status
-	std::thread thunkThread(Thunk<std::string>, std::move(prms), std::ref(status));
+	std::thread thunkThread(Thunk<std::string>, std::move(prms), std::ref(status)); 
 	try
 	{
 		// if the worker function completes successfully, print out the result
