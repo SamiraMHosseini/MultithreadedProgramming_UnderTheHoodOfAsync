@@ -16,7 +16,7 @@ std::string func(const bool status)
 // This function, called a thunk, is designed to wrap the execution of our worker function (func) 
 // with exception handling and the setting of promise value.
 template <typename T>
-void Thunk(std::promise<T>&& prms, const bool& status)
+void Thunk(std::promise<T>&& prms, const bool status)
 {
 	try
 	{
@@ -30,14 +30,13 @@ void Thunk(std::promise<T>&& prms, const bool& status)
 	}
 
 }
-
 int main()
 {
 	std::promise<std::string> prms; // creating a std::promise
 	std::future<std::string> future = prms.get_future(); // getting the associated future
 	bool status{ true }; 
 	// starting the new thread with the thunk function that takes our promise and status
-	std::thread thunkThread(Thunk<std::string>, std::move(prms), std::ref(status)); 
+	std::thread thunkThread(Thunk<std::string>, std::move(prms), status); 
 	try
 	{
 		// if the worker function completes successfully, print out the result
