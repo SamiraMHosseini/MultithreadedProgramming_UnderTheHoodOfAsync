@@ -1,4 +1,4 @@
-# MultithreadedProgramming_UnderTheHoodOfAsync
+# Multithreaded Programming Under The Hood Of Async
 # Title: Exploring the Underlying Implementation of std::async
 
 # Description:
