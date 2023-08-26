@@ -1,5 +1,5 @@
 
-# Title: Exploring the Underlying Implementation of std::async
+# Exploring the Underlying Implementation of std::async
 
 # Description:
 
